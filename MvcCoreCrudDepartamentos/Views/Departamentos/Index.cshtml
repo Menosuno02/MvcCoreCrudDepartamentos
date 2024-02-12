@@ -1,0 +1,28 @@
+﻿@model List<Departamento>
+
+<h1>CRUD Departamentos</h1>
+<a class="btn btn-success my-2" asp-controller="Departamentos" asp-action="Create">Create</a>
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Departamento dept in Model)
+        {
+            <tr>
+                <td>@dept.Nombre</td>
+                <td>@dept.Localidad</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Departamentos",
+                             new { id = dept.IdDepartamento }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Update", "Update", "Departamentos",
+                             new { id = dept.IdDepartamento }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", "Departamentos", new { id = dept.IdDepartamento }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
